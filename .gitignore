@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Duplicate/Copy folders
+Travel-20Planner-20Agent-main/
+Travel-20Planner-20Agent-main - Copy/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
