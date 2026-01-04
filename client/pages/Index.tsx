@@ -312,33 +312,34 @@ export default function Index() {
       {/* Header */}
       <header className="border-b border-white/10 bg-black backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-75 animate-pulse" />
-                <div className="relative bg-black px-3 py-2 rounded-lg">
-                  <Plane className="h-6 w-6 text-white" />
+                <div className="relative bg-black px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg">
+                  <Plane className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">
+                <h1 className="text-lg sm:text-2xl font-bold text-white">
                   {t("app.title", language)}
                 </h1>
-                <p className="text-sm text-purple-200">
+                <p className="text-xs sm:text-sm text-purple-200 hidden sm:block">
                   {t("app.subtitle", language)}
                 </p>
               </div>
             </div>
             
             {/* Language & Currency Selectors */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap w-full sm:w-auto">
               {/* Auth Section */}
               {user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                      <User className="h-4 w-4 mr-2" />
-                      {user.name}
+                    <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-lg text-xs sm:text-sm px-2 sm:px-4">
+                      <User className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                      <span className="hidden sm:inline">{user.name}</span>
+                      <span className="sm:hidden">{user.name.split(' ')[0]}</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-black border-white/20">
@@ -353,9 +354,10 @@ export default function Index() {
               ) : (
                 <Dialog open={showAuthDialog} onOpenChange={setShowAuthDialog}>
                   <DialogTrigger asChild>
-                    <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">
-                      <LogIn className="h-4 w-4 mr-2" />
-                      Login
+                    <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 text-xs sm:text-sm px-2 sm:px-4">
+                      <LogIn className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                      <span className="hidden sm:inline">Login</span>
+                      <span className="sm:hidden">Login</span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="bg-black border-white/20">
@@ -430,26 +432,26 @@ export default function Index() {
                 </Dialog>
               )}
               
-              <div className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2 backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:scale-105 hover:shadow-lg">
+              <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 border border-white/20 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:scale-105 hover:shadow-lg">
                 <span className="text-white text-xs font-semibold">🌐</span>
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="bg-transparent text-white text-sm font-semibold focus:outline-none cursor-pointer"
+                  className="bg-transparent text-white text-xs sm:text-sm font-semibold focus:outline-none cursor-pointer"
                 >
-                  <option value="en" className="bg-black text-white">English</option>
-                  <option value="hi" className="bg-black text-white">हिंदी</option>
-                  <option value="es" className="bg-black text-white">Español</option>
-                  <option value="fr" className="bg-black text-white">Français</option>
-                  <option value="de" className="bg-black text-white">Deutsch</option>
+                  <option value="en" className="bg-black text-white">EN</option>
+                  <option value="hi" className="bg-black text-white">HI</option>
+                  <option value="es" className="bg-black text-white">ES</option>
+                  <option value="fr" className="bg-black text-white">FR</option>
+                  <option value="de" className="bg-black text-white">DE</option>
                 </select>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-4 py-2 backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:scale-105 hover:shadow-lg">
-                <Globe className="h-4 w-4 text-cyan-400" />
+              <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 border border-white/20 rounded-lg px-2 sm:px-4 py-1.5 sm:py-2 backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:scale-105 hover:shadow-lg">
+                <Globe className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-400" />
                 <select
                   value={selectedCurrency}
                   onChange={(e) => setSelectedCurrency(e.target.value)}
-                  className="bg-transparent text-white text-sm font-semibold focus:outline-none cursor-pointer"
+                  className="bg-transparent text-white text-xs sm:text-sm font-semibold focus:outline-none cursor-pointer"
                 >
                   {Object.keys(CURRENCY_RATES).map((curr) => (
                     <option key={curr} value={curr} className="bg-black text-white">
